@@ -14,6 +14,7 @@ We visualize the weights of Sparse VD LeNet-5-Caffe network and demonstrate seve
 </p>
 
 
+
 ## MNIST Experiments 
 
 The table containes the comparison of different sparsity-inducing techniques (Pruning (Han et al., 2015b;a), DNS (Guo et al., 2016), SWS (Ullrich et al., 2017)) on LeNet architectures.
