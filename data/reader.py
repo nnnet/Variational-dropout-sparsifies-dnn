@@ -1,4 +1,8 @@
-import cPickle as pickle
+try:
+    import cPickle as pickle
+except:
+    import _pickle as pickle
+
 import gzip
 import os
 
@@ -108,7 +112,10 @@ def load_mnist_random(base='./data/mnist'):
 def load_cifar10():
     def load_CIFAR_batch(filename):
         with open(filename, 'rb') as f:
-            datadict = pickle.load(f)
+            print('filename  :', filename)
+            datadict = pickle.load(f, encoding ='bytes')
+            for k in datadict.keys():
+                datadict[k.decode("utf-8")] = datadict.pop(k)
             Y = np.array(datadict['labels'])
             X = datadict['data'].reshape(10000, 3, 32, 32).transpose(0, 2, 3, 1).astype("float")
             return X, Y

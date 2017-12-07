@@ -6,7 +6,14 @@ import random
 import lasagne
 import numpy as np
 
-from objectives import *
+# import os
+# print(os.getcwd())
+
+try:
+    from objectives import *
+except:
+    from nets.objectives import *
+
 from tabulate import tabulate
 
 np.set_printoptions(precision=4, linewidth=150)
@@ -118,7 +125,7 @@ def iterate_minibatches(inputs, targets, batchsize, shuffle=False):
     if shuffle:
         indices = np.arange(len(inputs))
         np.random.shuffle(indices)
-    for start_idx in xrange(0, len(inputs) - batchsize + 1, batchsize):
+    for start_idx in range(0, len(inputs) - batchsize + 1, batchsize):
         if shuffle:
             excerpt = indices[start_idx:start_idx + batchsize]
         else:
@@ -131,7 +138,7 @@ def batch_iterator_train_crop_flip(data, y, batchsize, shuffle=False):
     PAD_CROP = 4
     n_samples = data.shape[0]
     # Shuffles indicies of training data, so we can draw batches from random indicies instead of shuffling whole data
-    indx = np.random.permutation(xrange(n_samples))
+    indx = np.random.permutation(range(n_samples))
     for i in range((n_samples + batchsize - 1) // batchsize):
         sl = slice(i * batchsize, (i + 1) * batchsize)
         X_batch = data[indx[sl]]
@@ -176,7 +183,7 @@ def train(net, train_fun, test_fun, up_opt, optpolicy_lr, up_rw, optpolicy_rw, d
     X_train, y_train, X_test, y_test = data
 
     try:
-        for epoch in xrange(num_epochs+1):
+        for epoch in range(num_epochs+1):
             up_opt(*optpolicy_lr(epoch))
             up_rw(optpolicy_rw(epoch))
             batches, info = 0, np.zeros(4)

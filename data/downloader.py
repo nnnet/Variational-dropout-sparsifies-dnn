@@ -13,13 +13,13 @@ def download_mnist():
         't10k-images-idx3-ubyte.gz',
         't10k-labels-idx1-ubyte.gz']
 
-    print 'loading mnist'
+    print ('loading mnist')
 
     for file in files:
         cmd = 'curl -o {base}/{file}  {lecun}/{file}'.format(base=base, lecun=lecun, file=file)
         subprocess.call(cmd.split())
 
-    print 'loading finish'
+    print ('loading finish')
 
 def download_cifar10():
     if not os.path.exists('./data'): os.mkdir('./data')
@@ -33,6 +33,12 @@ def download_cifar10():
 
 def download_cifar100():
     if not os.path.exists('./data'): os.mkdir('./data')
+    if not os.path.exists('./data/cifar100'): os.mkdir('./data/cifar100')
+    if not os.path.exists('./data/cifar100'): os.mkdir('./data/cifar100')
+    if not os.path.exists('./data/cifar100'): os.mkdir('./data/cifar100')
+    if not os.path.exists('./data/cifar100'): os.mkdir('./data/cifar100')
+    if not os.path.exists('./data/cifar100'): os.mkdir('./data/cifar100')
+    if not os.path.exists('./data/cifar100'): os.mkdir('./data/cifar100')
     if not os.path.exists('./data/cifar100'): os.mkdir('./data/cifar100')
 
     cmd = 'curl -o ./data/cifar100/cifar-100-python.tar.gz https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz'

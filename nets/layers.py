@@ -5,7 +5,10 @@ from lasagne.random import get_rng
 from lasagne.nonlinearities import rectify
 from lasagne.layers.base import Layer
 from lasagne.layers.dnn import Conv2DDNNLayer as ConvLayer
-from theano.sandbox.cuda import dnn
+
+# theano.sandbox.cuda import dnn
+from theano.gpuarray import dnn
+
 from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 
 

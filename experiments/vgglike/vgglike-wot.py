@@ -4,9 +4,21 @@ import warnings
 warnings.simplefilter("ignore")
 
 import sys
+
+import os
+print(os.listdir())
+
+# PYTHONPATH='.' python experiments/vgglike/vgglike-wot.py
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+
+# try:
 from nets import objectives
-from theano import tensor as T
 from nets import optpolicy
+# except:
+#     import nets.objectives as objectives
+#     import nets.optpolicy as optpolicy
+
+from theano import tensor as T
 from lasagne import init, nonlinearities as nl, layers as ll
 from experiments.utils import run_experiment
 from lasagne.layers.dnn import Pool2DDNNLayer as MaxPool2DLayer
